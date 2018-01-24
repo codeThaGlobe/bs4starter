@@ -1,0 +1,28 @@
+{
+  "name": "bs4starter",
+  "version": "1.0.0",
+  "description": "Starter project with Bootstrap 4 and Gulp.",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "4.0.0",
+    "jquery": "1.9.1",
+    "popper.js": "1.12.9"
+  },
+  "devDependencies": {
+    "gulp": "4.0.0",
+    "gulp-clean-css": "3.9.2",
+    "gulp-rename": "1.2.2",
+    "gulp-sass": "3.1.0"
+  },
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daangeerdink/bs4starter.git"
+  },
+  "author": "Daan Geerdink",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/daangeerdink/bs4starter/issues"
+  },
+  "homepage": "https://github.com/daangeerdink/bs4starter#readme"
+}
