@@ -13,17 +13,14 @@ let sourcemaps = require('gulp-sourcemaps');
 
 let config = {
     paths: {
-        src:       './src',
-        dist:      './dist',
+        src:  './src',
+        dist: './dist',
     },
     scripts: {
         lib: {
             jquery: './node_modules/jquery/jquery.min.js',
             popper: './node_modules/popper.js/dist/popper.min.js'
-        },
-        bootstrap: [
-            './node_modules/bootstrap/js/src/util.js'
-        ]
+        }
     }
 };
 
@@ -43,9 +40,10 @@ gulp.task('sass:watch', function () {
 
 gulp.task('scripts', function () {
     return gulp.src([
-        config.paths.src + '/js/**/*.js',
         config.scripts.lib.jquery,
-        config.scripts.lib.popper
+        config.scripts.lib.popper,
+        './node_modules/bootstrap/js/src/util.js',
+        config.paths.src + '/js/**/*.js',
     ])
         .pipe(sourcemaps.init())
         .pipe(babel({ presets: ['env'] }))
