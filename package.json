@@ -34,6 +34,8 @@
   "author": "Daan Geerdink",
   "keywords": [
     "bootstrap",
+    "bootstrap4",
+    "sass",
     "gulp",
     "browsersync",
     "starter"
