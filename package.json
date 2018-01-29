@@ -1,8 +1,8 @@
 {
   "name": "bs4starter",
   "version": "1.0.0",
-  "description": "Starter project with Bootstrap 4 and Gulp.",
-  "private": true,
+  "description": "Starter project with Bootstrap 4, Gulp and Browsersync.",
+  "private": false,
   "dependencies": {
     "bootstrap": "4.0.0",
     "jquery": "1.9.1",
@@ -11,6 +11,8 @@
   "devDependencies": {
     "autoprefixer": "7.2.5",
     "babel-core": "6.26.0",
+    "babel-plugin-transform-es2015-modules-strip": "0.1.1",
+    "babel-plugin-transform-object-rest-spread": "6.26.0",
     "babel-preset-env": "1.6.1",
     "browser-sync": "2.23.5",
     "del": "3.0.0",
@@ -30,6 +32,12 @@
     "url": "git+https://github.com/daangeerdink/bs4starter.git"
   },
   "author": "Daan Geerdink",
+  "keywords": [
+    "bootstrap",
+    "gulp",
+    "browsersync",
+    "starter"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/daangeerdink/bs4starter/issues"

@@ -17,22 +17,19 @@ let config = {
     paths: {
         src:  './src',
         dist: './dist',
-    },
-    scripts: {
-        lib: {
-            jquery: './node_modules/jquery/jquery.min.js',
-            popper: './node_modules/popper.js/dist/popper.min.js'
-        }
     }
 };
 
+// Cleans out the dist directory
 gulp.task('clean', function () {
     return del(config.paths.dist);
 });
 
+// CSS
 gulp.task('sass', function () {
-    return gulp.src(config.paths.src + '/sass/**/*.scss')
+    return gulp.src(config.paths.src + '/sass/main.scss')
         .pipe(sass().on('error', sass.logError))
+        // Required for Bootstrap CSS
         .pipe(postcss([ autoprefixer() ]))
         .pipe(gulp.dest(config.paths.dist + '/css'))
         .pipe(cleanCSS({compatibility: 'ie8'}))
@@ -48,15 +45,20 @@ gulp.task('sass:watch', function (done) {
     done();
 });
 
+// Javascript
 gulp.task('scripts', function () {
     return gulp.src([
-        config.scripts.lib.jquery,
-        config.scripts.lib.popper,
-        './node_modules/bootstrap/js/src/util.js',
+        './node_modules/jquery/jquery.min.js',
+        './node_modules/popper.js/dist/popper.js',
+        // Add your required Bootstrap JS here
         config.paths.src + '/js/**/*.js',
     ])
         .pipe(sourcemaps.init())
-        .pipe(babel({ presets: ['env'] }))
+        // Required for Bootstrap JS:
+        .pipe(babel({
+            presets: ['env'],
+            plugins: ['transform-object-rest-spread', 'transform-es2015-modules-strip']
+        }))
         .pipe(concat('scripts.js'))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(config.paths.dist + '/js'))
@@ -73,8 +75,9 @@ gulp.task('scripts:watch', function (done) {
     done();
 });
 
-gulp.task('copyfiles', function () {
-    return gulp.src(config.paths.src + '/index.html')
+// HTML
+gulp.task('files', function () {
+    return gulp.src(config.paths.src + '/*.html')
         .pipe(gulp.dest(config.paths.dist))
         .pipe(browserSync.reload({
             stream: true
@@ -82,12 +85,25 @@ gulp.task('copyfiles', function () {
 });
 
 gulp.task('files:watch', function (done) {
-    gulp.watch(config.paths.src + '/**/*.html', gulp.series('copyfiles'));
+    gulp.watch(config.paths.src + '/*.html', gulp.series('files'));
     done();
 });
 
-gulp.task('watch', gulp.parallel('sass:watch', 'scripts:watch', 'files:watch'));
+// Images
+gulp.task('images', function () {
+    return gulp.src(config.paths.src + '/img/**/*')
+        .pipe(gulp.dest(config.paths.dist + '/img'))
+        .pipe(browserSync.reload({
+            stream: true
+        }));
+});
 
+gulp.task('images:watch', function (done) {
+    gulp.watch(config.paths.src + '/img/**/*', gulp.series('images'));
+    done();
+});
+
+// Live-reload
 gulp.task('browserSync', function () {
     browserSync.init({
         server: {
@@ -96,14 +112,15 @@ gulp.task('browserSync', function () {
     });
 });
 
-gulp.task('serve', gulp.series('clean', 'sass', 'scripts', 'copyfiles', gulp.parallel('watch', 'browserSync')));
 
-gulp.task('default', function (done) {
-    gulp.parallel(
-        'sass',
-        'scripts',
-        'copyfiles'
-    );
 
-    done();
-});
+gulp.task('watch',
+            gulp.parallel('sass:watch', 'scripts:watch', 'files:watch', 'images:watch'));
+
+gulp.task('serve',
+            gulp.series('clean', 'sass', 'scripts', 'files', 'images',
+            gulp.parallel('watch', 'browserSync')));
+
+gulp.task('default',
+            gulp.series('clean',
+            gulp.parallel('sass', 'scripts', 'files', 'images')));
