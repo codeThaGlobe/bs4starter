@@ -1,13 +1,12 @@
 # Bootstrap 4 Starter Project
 
-Files for production are in the `dist` directory. The rest is not needed for production.
+A starter project with Bootstrap 4, Gulp and Browsersync.
 
-## Development
+## Quick start
 
-Run `gulp serve` to get a live-reloading dev environment.
+- Clone the repo: `git clone https://github.com/daangeerdink/bs4starter.git`
+- Install dependencies: `npm i`
+- Build source: `gulp`
+- Live reloading dev environment: `gulp serve`
 
-### To build:
-
-1. Run `npm i`.
-2. Run `gulp` to build the files from source.
-3. Files for production are put in `dist`.
+Files for production are put in `/dist`.
