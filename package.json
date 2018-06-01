@@ -4,9 +4,9 @@
   "description": "Starter project with Bootstrap 4, Gulp and Browsersync.",
   "private": false,
   "dependencies": {
-    "bootstrap": "4.0.0",
+    "bootstrap": "4.1.1",
     "jquery": "1.9.1",
-    "popper.js": "1.12.9"
+    "popper.js": "1.14.3"
   },
   "devDependencies": {
     "autoprefixer": "7.2.5",
