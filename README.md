@@ -1,8 +1,8 @@
-# Bootstrap 4 Starter Project
+# E2M2M landing Page
 
-A starter project with Bootstrap 4, Gulp and Browsersync.
+Built with Bootstrap 4, Gulp and Browsersync.
 
-## Quick start
+## Development Process
 
 - Clone the repo: `git clone https://github.com/daangeerdink/bs4starter.git`
 - Install dependencies: `npm i`
