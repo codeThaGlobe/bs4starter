@@ -4847,7 +4847,7 @@ body {
   left: 0; }
 
 .card-img-overlay {
-  padding: 30px 20px 20px 20px; }
+  padding: 20px 20px 20px 20px; }
   @media (min-width: 375px) {
     .card-img-overlay {
       padding: 40px 60px 20px 30px; } }
@@ -4865,28 +4865,41 @@ body {
     .card-img-overlay {
       padding-top: 2rem;
       padding-left: 2rem; } }
+  @media (min-width: 1200px) {
+    .card-img-overlay {
+      padding-top: 1.25rem;
+      padding-left: 1.25rem; } }
 
 .card-title {
   font-size: 2rem;
+  margin-bottom: 0.25rem;
   text-transform: uppercase; }
-  @media (min-width: 992px) and (max-width: 1200px) {
+  @media (min-width: 375px) {
+    .card-title {
+      margin-bottom: 0.5rem; } }
+  @media (min-width: 992px) and (max-width: 1199px) {
     .card-title {
       font-size: 1.8rem; } }
+  @media (min-width: 1200px) {
+    .card-title {
+      font-size: 1.5rem;
+      margin-bottom: 0.35rem; } }
 
 .card-text {
-  line-height: 2em;
+  line-height: 1.5rem;
   width: 85%; }
   @media (min-width: 425px) {
     .card-text {
-      width: 94%; } }
+      width: 94%;
+      line-height: 2rem; } }
   @media (min-width: 768px) {
     .card-text {
       font-size: 0.85em;
       line-height: 1.75em; } }
   @media (min-width: 1200px) {
     .card-text {
-      font-size: 1em;
-      line-height: 1.75em; } }
+      font-size: 0.85em;
+      line-height: 1.35em; } }
 
 .card-light .card-title {
   color: #000; }
